@@ -7,38 +7,64 @@
 <body>
 
 <h2>Pass Phrase by Ashwini Uppala</h2>
-
 <form>
-    <label for="secret_word">Enter the secret phrase </label>
-    <input type ="password" id="secret_word" name="secret_word" value="Let me in"> <br>
+   <label for="secret_word">Enter the secret phrase </label>
+   <input type ="password" id="secret_word" name="secret_word" value="Let me in"> <br>
 
-    <label for="guess">Enter a phrase </label>
-    <input type ="text" id="guess" name="guess" autofocus> <br>
+   <label for="guess"> Enter a phrase </label>
+   <input type ="text" id="guess" name="guess" autofocus> <br>
 
-    <input type="button" onclick="processPhrase()" value="Check the phrase">
+   <input type="button" onclick="processPhrase()" value="Check the phrase">
 </form>
 
 
 <p id="result">Result will be displayed </p>
 
 <script> 
-    var correct = 0;
-    var wrong = 0;
-
-function processPhrase(){
-    secret = document.getElementById("secret_word").value
-    guess = document.getElementById("guess").value
-    out = document.getElementById("result")
-    if(secret == guess){
-        correct++
-        alert("Access Allowed")
-    } else {
-        wrong++
-        alert("Access Denied")
-    }
-    out.innerHTML = "correct count" + correct + "wrong count:" +wrong
+   var correct = 0;
+   var wrogn = 0;
+        
+   function processPhrase(){
+   secret = document.getElementById("secret_word").value
+   guess = document.getElementById("guess").value    
+   out = document.getElementById("result")
+   if(secret == guess)
+   {
+       correct++
+       alert("Access Allowed")
+   } 
+   else {
+       wrogn++
+       alert("Access Denied")
+   }
+   out.innerHTML = "correct count" + correct + "wrong count:" +wrong  
 }
 </script>
+   <div class="container">
+      <img id ="Kakapo" src="Kakapo.jpg" onclick="newImage()" height="200" weight="200">    
+         <script>
+            var usingImage=1;
+            function newImage()
+            {
+            switch(usingImage)
+            {
+               case 1:                        
+                   var x=document.getElementById("Kakapo").src="Kakapo.jpg";                        
+                   usingImage++;
+                   break;
 
+               case 2:
+                   var y=document.getElementById("Kakapo").src="Okapi.jpg";
+                   usingImage++;
+                   break;
+
+               case 3:
+                   var z=document.getElementById("Kakapo").src="Labmaraner.jpg";                        
+                   usingImage=1;
+                   break;
+            }
+            }
+</script>
 </body>
-</html> 
+</html>
+
