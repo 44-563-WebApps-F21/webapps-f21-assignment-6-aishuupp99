@@ -25,19 +25,32 @@
    var wrogn = 0;
         
    function processPhrase(){
-   secret = document.getElementById("secret_word").value
-   guess = document.getElementById("guess").value    
+   console.log("Getting form values")
+   secret_word = document.getElementById("secret_word").value
+   Enter_Phrase = document.getElementById("guess").value
+   //confirmed = confirm("Check the values? "+Secret_Phrase+" and "+Enter_Phrase)    
    out = document.getElementById("result")
-   if(secret == guess)
+   if(wrogn<3)
+   {
+   if(secret_word == Enter_Phrase)
    {
        correct++
-       alert("Access Allowed")
+       alert("Access Allowed");
+       out.innerHTML = "Correct count : "+correct + "<br>"+ "Wrong count : "+wrogn;
+
    } 
-   else {
+   else 
+   {
        wrogn++
-       alert("Access Denied")
+       alert("Access Denied");
+       out.innerHTML = "Correct count : "+correct + "<br>"+ "Wrong count : "+wrogn;
+
    }
-   out.innerHTML = "correct count" + correct + "wrong count:" +wrong  
+}
+   else
+   {
+      alert("Account Locked.");
+   }
 }
 </script>
    <div class="container">
