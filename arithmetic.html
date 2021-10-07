@@ -7,71 +7,84 @@
 <body>
 
 <h2>Ashwini Uppala computes</h2>
-
 <form>
-    <label for="baseElement">Enter a base </label>
-    <input type ="number" id="baseElement1" name="Base" min=20 max=30 step=2 value=30> <br>
+    <label for="base">Enter a base </label>
+    <input type ="number" id="base" name="base" value=10> <br>
 
-    <label for="Exponentialform">Enter an Exponent</label>
-    <input type ="text" id="exponentElement1" name="Exponent" min=2 autofocus> <br>
+    <label for="form1_expo">Enter an exponent </label>
+    <input type ="number" id="exponent" name="exponent" value=2> <br>
 
-    <input type="button" onclick="powers()" value="compute">
+    <button type="button" onclick="powers()"> Compute </button> <br>
 </form>
 
 
-<p id="res">This text will be displayed on the console </p>
+<p id="result">This text will be replaced </p>
+<br>
+<form>
+    <input type="radio" id="rg_plus" name="radio" value="plus" onClick="processRadio()" >
+    <label for="rg_plus"> + </label></br>
+    <br>
+    <input type="radio" id="rg_minus" name="radio" value="minus" onClick="processRadio()">
+    <label for="rg_minus"> - </label></br>
+    <br>
+    <input type="radio" id="rg_times" name="radio" value="times" onClick="processRadio()">
+    <label for="rg_times"> * </label></br>
+    <br>
+    <input type="radio" id="rg_divide" name="radio" value="divide" onClick="processRadio()">
+    <label for="rg_divide"> / </label></br>
+    <br>
+</form>
+
+<p id="resultRadio">The result will be visible here </p>
 
 <script> 
 
-function powers(){
-    console.log("Getting form values")
-    base = document.getElementById("baseElement1").value
-    exponent = document.getElementById("exponentElement1").value
-    result1 =""
-    
-    out = document.getElementById("res")
-    for(var x=1;x<=exponent;x++){       
-            result=result1+ Math.pow(base,x)+" ";
+        function powers() 
+        {
+            let result = "";
+            let res = 1;
+            let base = document.getElementById("base").value;
+            let exponent = document.getElementById("exponent").value;
+            for (i = 0; i < exponent; i++) {
+                res = res * base;
+                result += res+" " ;
+            }
+            document.getElementById("result").innerHTML = "Powers of base are: " + result +" ";
         }
-        out.innerHTML="Powers of "+base+" are: "+result;
-    }
-    
+        function processRadio()
+        {
+            let val = document.getElementById("base").value
+            let val1 = document.getElementById("exponent").value
+            if (document.getElementById("rg_plus").checked)
+            {
+                const sum = parseInt(val) + parseInt(val1);
+                document.getElementById("resultRadio").innerHTML = " The sum of " + val + " and " + val1 + " is : " + sum;
+                document.getElementById("rg_minus").checked = false;
+                document.getElementById("rg_times").checked = false;
+                document.getElementById("rg_divide").checked = false
+            } 
+            else if (document.getElementById("rg_minus").checked)
+            {
+                const sub = parseInt(val) - parseInt(val1);
+                document.getElementById("resultRadio").innerHTML = " The subraction of " + val + " and " + val1 + " is : " + sub;
+                document.getElementById("rg_plus").checked = false;
+                document.getElementById("rg_times").checked = false;
+                document.getElementById("rg_divide").checked = false;
+            } 
+            else if (document.getElementById("rg_times").checked) 
+            {
+                document.getElementById("resultRadio").innerHTML = " The multiplication of " + val + " and " + val1 + " is : " + val * val1;
+                document.getElementById("rg_plus").checked = false;
+                document.getElementById("rg_minus").checked = false;
+                document.getElementById("rg_divide").checked = false;
+            } 
+            else if (document.getElementById("rg_divide").checked) 
+            {
+                document.getElementById("resultRadio").innerHTML = " The division of " + val + " and " + value2 + " is : " + val / val1;
+                document.getElementById("rg_plus").checked = false;
+                document.getElementById("rg_minus").checked = false;
+                document.getElementById("rg_times").checked = false;
+            }
+        }
 </script>
-
-<form>
-    <input type="radio" id="rg_plus" value="plus" onclick="processRadio()" checked >
-    <label for="rg_plus">+</label></br>
-  
-    <input type="radio" id="rg_minus" value="minus" onclick="processRadio()">
-    <label for="rg_minus">-</label></br>
-  
-    <input type="radio" id="rg_multiplication" value="mul" onclick="processRadio()">
-    <label for="rg_multiplication">*</label></br>
-
-    <input type="radio" id="rg_division" value="divide" onclick="processRadio()">
-    <label for="rg_division">/</label></br>    
-  </form>
-  
-  <p id=res2>Results are shown here!!!</p>
-  <script>
-      function processRadio(){         
-          base = document.getElementById("baseElement1").value
-          exponent = document.getElementById("exponentElement1").value
-          out= document.getElementById("res2")
-          if(document.getElementById('rg_plus').checked){
-              out.innerHTML="Sum of "+base + " and "+ exponent + " = " +(Number(base)+Number(exponent))
-          }
-          if(document.getElementById('rg_minus').checked){
-            out.innerHTML="Difference of "+base + " and "+ exponent + " = " +(Number(base)-Number(exponent))
-          }
-          if(document.getElementById('rg_multiplication').checked){
-            out.innerHTML="Multiplication of "+base + " and "+ exponent + " = " +(Number(base)*Number(exponent))
-          }
-          if(document.getElementById('rg_division').checked){
-            out.innerHTML="Division of "+base + " and "+ exponent + " = " +(Number(base)/Number(exponent))
-          }
-      }
-  </script>
-
 </body>
-</html> 
