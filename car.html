@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+     <title>car screen</title>
+    </head>
+<body>
+
+<h2>Ashwini Uppala orders a car</h2>
+
+<form>
+    <label for="electric">ELECTRIC </label>
+    <input type ="checkbox" id="electric" name="electric"> 
+    <br>
+
+    <label for="ac">AC </label>
+    <input type ="checkbox" id="ac" name="ac"> 
+    <br>
+
+    <label for="gps">GPS</label>
+    <input type ="checkbox" id="gps" name="gps"> 
+    <br>
+
+    <input type="button" onclick="orderCar()" value="Order a car">
+</form>
+<p id="result">see the results here!!!</p>
+
+<script> 
+    var my_car={}
+    function orderCar()
+    {
+        console.log("Getting form values");
+        if (document.getElementById("electric").checked) 
+        {
+          electric = "ELECTRIC  ";
+        } else 
+        {
+          electric = "NON ELECTRIC";
+        }
+        if (document.getElementById("ac").checked) 
+        {
+          ac = "ac";
+        } else 
+        {
+          ac = "NON AC";
+        }
+        if (document.getElementById("gps").checked)
+        {
+          gps = "GPS";
+        } else 
+        {
+          gps = "NON GPS";
+        }
+        my_car = document.getElementById("result");
+        my_car.innerHTML = "The car is " + electric + " has " + ac + " and has " + gps;
+    }
+</script>
+
+<form>
+    <label for="value">Enter a property </label>
+    <input type="text" id="PropertyName" name="form_PropertyName" value="color" />
+    <br>
+    <label for="value1">Enter a value</label>
+    <input type="text" id="PropertyValue" name="form_PropertyValue" /> 
+    <br>
+    <input type="button" onclick="updateCar()" value="Update the car" />
+</form>
+<p id="result2">Watch Property and value Results!!</p>
+
+<script>    
+    function updateCar()
+    {
+        console.log("Getting form values");
+        my_car.PropertyName= document.getElementById("PropertyName").value;
+        my_car.PropertyValue= document.getElementById("PropertyValue").value;
+        console.log(my_car)
+        document.getElementById("result2").innerHTML = Object.values(my_car);
+    }
+</script>
+</body>
+</html> 
