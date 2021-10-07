@@ -9,33 +9,69 @@
 <h2>Ashwini Uppala computes</h2>
 
 <form>
-    <label for="base_form">Enter a base </label>
-    <input type ="number" id="form1_baseElement" name="Base_form" min=10 max=50 step=2 value=30> <br>
+    <label for="baseElement">Enter a base </label>
+    <input type ="number" id="baseElement1" name="Base" min=20 max=30 step=2 value=30> <br>
 
-    <label for="Exponent _form">Enter an Exponent</label>
-    <input type ="text" id="form1_exponentElement" name="Exponent_form" min=2 autofocus> <br>
+    <label for="Exponentialform">Enter an Exponent</label>
+    <input type ="text" id="exponentElement1" name="Exponent" min=2 autofocus> <br>
 
     <input type="button" onclick="powers()" value="compute">
 </form>
 
 
-<p id="result">This text will be replaced </p>
+<p id="res">This text will be displayed on the console </p>
 
 <script> 
 
 function powers(){
     console.log("Getting form values")
-    base = document.getElementById("form1_baseElement").value
-    exponent = document.getElementById("form1_exponentElement").value
-    result =""
+    base = document.getElementById("baseElement1").value
+    exponent = document.getElementById("exponentElement1").value
+    result1 =""
     
-    out = document.getElementById("result")
-    for(var i=1;i<=exponent;i++){       
-            result=result+ Math.pow(base,i)+" ";
+    out = document.getElementById("res")
+    for(var x=1;x<=exponent;x++){       
+            result=result1+ Math.pow(base,x)+" ";
         }
         out.innerHTML="Powers of "+base+" are: "+result;
     }
+    
 </script>
+
+<form>
+    <input type="radio" id="rg_plus" value="plus" onclick="processRadio()" checked >
+    <label for="rg_plus">+</label></br>
+  
+    <input type="radio" id="rg_minus" value="minus" onclick="processRadio()">
+    <label for="rg_minus">-</label></br>
+  
+    <input type="radio" id="rg_multiplication" value="mul" onclick="processRadio()">
+    <label for="rg_multiplication">*</label></br>
+
+    <input type="radio" id="rg_division" value="divide" onclick="processRadio()">
+    <label for="rg_division">/</label></br>    
+  </form>
+  
+  <p id=res2>Results are shown here!!!</p>
+  <script>
+      function processRadio(){         
+          base = document.getElementById("baseElement1").value
+          exponent = document.getElementById("exponentElement1").value
+          out= document.getElementById("res2")
+          if(document.getElementById('rg_plus').checked){
+              out.innerHTML="Sum of "+base + " and "+ exponent + " = " +(Number(base)+Number(exponent))
+          }
+          if(document.getElementById('rg_minus').checked){
+            out.innerHTML="Difference of "+base + " and "+ exponent + " = " +(Number(base)-Number(exponent))
+          }
+          if(document.getElementById('rg_multiplication').checked){
+            out.innerHTML="Multiplication of "+base + " and "+ exponent + " = " +(Number(base)*Number(exponent))
+          }
+          if(document.getElementById('rg_division').checked){
+            out.innerHTML="Division of "+base + " and "+ exponent + " = " +(Number(base)/Number(exponent))
+          }
+      }
+  </script>
 
 </body>
 </html> 
